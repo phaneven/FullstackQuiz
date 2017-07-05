@@ -6,3 +6,5 @@
 ## Node.JS
 ### - create sever
 ### - add handler and router to solve the request and response
+### - command: node index.js 
+### - port: 8000
