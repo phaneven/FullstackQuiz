@@ -1,0 +1,35 @@
+<html ng-app="myModule">
+	<head>
+		<meta charset="utf-8">
+    	<title>TEST</title>
+    	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>	
+	</head>
+
+	<body ng-controller="myController">
+
+		<form ng-submit='submitForm()' id="formsubmit">
+	   		<label for="command">Command:</label>
+    		<input type＝"text" name="command" id="content" place-holder="please type command" ng-model="content.command"><br>
+  			<button type="submit">Submit</button>
+		</form>
+	
+		<script>
+			'use strict';
+			var myApp = angular
+						.module("myModule", [])
+						.controller("myController", function($scope, $http) {
+							$scope.content = {};
+							$scope.submitForm = function(){
+							$http({
+									method: 'POST',
+									data: $scope.content.command,
+									url: '/upload'
+								}).then(function(response) { 
+									alert(response.data); 
+								});
+							}
+						});
+		</script>
+	</body>
+	
+</html>
